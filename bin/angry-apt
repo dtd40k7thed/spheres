@@ -1,0 +1,4 @@
+#!/bin/sh
+
+apt-get $* 2>&1 | tee /tmp/apt.err && \
+! grep -q '^[WE]:' /tmp/apt.err

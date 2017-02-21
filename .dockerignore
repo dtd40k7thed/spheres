@@ -1,0 +1,8 @@
+target/
+.idea/
+.git/
+.editorconfig
+.gitignore
+.travis.yml
+*.iml
+*.pro
