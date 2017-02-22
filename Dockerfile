@@ -1,10 +1,11 @@
 FROM jimmycuadra/rust:latest
 
 WORKDIR /source
-ADD . /source
+ADD bin/angry-apt /usr/bin/angry-apt
+RUN chmod +x /usr/bin/angry-apt
 
-RUN sh bin/angry-apt update
-RUN sh bin/angry-apt install -y \
+RUN angry-apt update
+RUN angry-apt install -y \
 	curl \
 	build-essential \
 	libfontconfig1 \
@@ -14,9 +15,14 @@ RUN sh bin/angry-apt install -y \
 
 ENV PKG_CONFIG_PATH /usr/lib/x86_64-linux-gnu/pkgconfig
 
-RUN cargo build
-RUN cargo test
-RUN cargo bench
-RUN cargo doc
+ADD Cargo.toml /source/Cargo.toml
+RUN cargo fetch
+
+ADD src /source/src
+RUN \
+cargo build && \
+cargo test && \
+cargo bench && \
+cargo doc
 
 CMD [ "cargo", "run" ]
