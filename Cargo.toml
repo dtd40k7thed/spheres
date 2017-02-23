@@ -8,5 +8,7 @@ name = "spheres"
 path = "src/main.rs"
 
 [dependencies]
-qmlrs = "0.1.1"
-ejdb = "0.3.0"
+qmlrs = "*"
+notify = "*"
+yaml-rust = "*"
+

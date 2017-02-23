@@ -1,0 +1,35 @@
+language: rust
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - build-essential
+      - libfontconfig1
+      - qt5-default
+      - qtdeclarative5-dev
+      - cmake
+      - binutils-dev
+
+rust:
+  - nightly
+
+env:
+  global:
+    - TRAVIS_CARGO_NIGHTLY_FEATURE=nightly
+
+install:
+  - travis-cargo fetch
+
+before_script:
+  - pip install 'travis-cargo<0.2' --user
+  - export PATH=$HOME/.local/bin:$PATH"
+
+script:
+  - travis-cargo build
+  - travis-cargo test
+  - travis-cargo bench
+
+after_success:
+  - travis-cargo coveralls --no-sudo --verify
+
