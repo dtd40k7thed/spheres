@@ -6,4 +6,5 @@ A character generator and manager for Dungeons: The Dragoning 40000 7th Edition.
 
 * Index content stored in git repo into document/graph database.
 * Raw content stored in yml format.
+* File watcher ensures db is kept in-sync with fs.
 
