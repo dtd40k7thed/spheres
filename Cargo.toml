@@ -8,7 +8,6 @@ name = "spheres"
 path = "src/main.rs"
 
 [dependencies]
-qmlrs = "*"
+conrod = "*"
 notify = "*"
 yaml-rust = "*"
-
