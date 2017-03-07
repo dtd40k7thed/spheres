@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  windows:
+    container_name: spheres-windows
+    image: dtd40k7thed/spheres-windows
+    env_file: .env
+    build:
+      context: .
+      dockerfile: dockerfile-windows.df
+      args:
+        - http_proxy
+        - https_proxy
+        - ftp_proxy
+        - no_proxy
+
+  linux:
+    container_name: spheres-linux
+    image: dtd40k7thed/spheres-linux
+    env_file: .env
+    build:
+      context: .
+      dockerfile: dockerfile-linux.df
+      args:
+        - http_proxy
+        - https_proxy
+        - ftp_proxy
+        - no_proxy

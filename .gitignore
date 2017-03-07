@@ -4,3 +4,4 @@ target/
 *.lock
 *.pro
 *.pro.user
+.env
