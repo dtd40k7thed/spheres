@@ -8,8 +8,7 @@ ENV http_proxy="${http_proxy:-}" \
 WORKDIR /source
 
 RUN choco install -y \
-	rust-ms \
-	qt-sdk-windows-x86-msvc2013
+	rust-ms
 
 ADD Cargo.toml /source/Cargo.toml
 RUN cargo fetch

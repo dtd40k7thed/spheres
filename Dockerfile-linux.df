@@ -11,14 +11,7 @@ RUN chmod +x /usr/bin/angry-apt
 
 RUN angry-apt update
 RUN angry-apt install -y \
-	curl \
-	build-essential \
-	libfontconfig1 \
-	cmake \
-	qt5-default \
-	qtdeclarative5-dev
-
-ENV PKG_CONFIG_PATH /usr/lib/x86_64-linux-gnu/pkgconfig
+	curl
 
 ADD Cargo.toml /source/Cargo.toml
 RUN cargo fetch
