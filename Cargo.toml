@@ -17,3 +17,7 @@ yaml-rust = "*"
 default = [ "glium" ]
 glium   = [ "conrod/winit", "conrod/glium" ]
 piston  = [ "conrod/piston" ]
+
+[dev-dependencies]
+stainless = "*"
+second_law = "*"

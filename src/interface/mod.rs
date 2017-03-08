@@ -21,3 +21,6 @@ impl Interface {
 	pub fn new(data: &Data) -> Self { panic!("You need one of the available backends enabled.") }
 	pub fn show(&self)              { panic!("You need one of the available backends enabled.") }
 }
+
+#[cfg(test)]
+mod tests;

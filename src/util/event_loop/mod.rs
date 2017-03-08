@@ -1,5 +1,5 @@
 //! Provides an 'EventLoop' class for managing the gui worker.
-//!
+
 use std::time::{ Instant };
 
 /// In most of the examples the `glutin` crate is used for providing the window context and
@@ -23,3 +23,6 @@ mod _piston;
 impl EventLoop {
 	pub fn new() -> Self { panic!("Either 'glium' or 'piston' feature required.") }
 }
+
+#[cfg(test)]
+mod tests;
