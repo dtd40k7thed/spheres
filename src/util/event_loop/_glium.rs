@@ -1,33 +1,18 @@
-//! Provides an 'EventLoop' class for managing the gui worker.
+//! The 'glium' implementation of the event loop.
 
 use std::thread;
 use std::time::{ Instant, Duration };
+use conrod::glium::{ Display as GliumDisplay };
+use conrod::glium::glutin::{ Event as GliumEvent };
+use super::EventLoop;
 
-/// In most of the examples the `glutin` crate is used for providing the window context and
-/// events while the `glium` crate is used for displaying `conrod::render::Primitives` to the
-/// screen.
-///
-/// This `Iterator`-like type simplifies some of the boilerplate involved in setting up a
-/// glutin+glium event loop that works efficiently with conrod.
-pub struct EventLoop {
-	ui_needs_update: bool,
-	last_update: Instant,
-}
-
-#[cfg(feature="glium")]
-use glium::{ Display as GliumDisplay };
-
-#[cfg(feature="glium")]
-use glium::glutin::{ Event as GliumEvent };
-
-#[cfg(feature="glium")]
 impl EventLoop {
 
 	pub fn new() -> Self {
-		EventLoop {
+		return EventLoop {
 			last_update: Instant::now(),
 			ui_needs_update: true,
-		}
+		};
 	}
 
 	/// Produce an iterator yielding all available events.
@@ -65,15 +50,6 @@ impl EventLoop {
 	/// requires further updates to do so.
 	pub fn needs_update(&mut self) {
 		self.ui_needs_update = true;
-	}
-
-}
-
-#[cfg(not(feature="glium"))]
-impl EventLoop {
-
-	pub fn new() -> Self {
-		panic!("Glium feature required.")
 	}
 
 }

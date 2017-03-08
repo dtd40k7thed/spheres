@@ -2,6 +2,7 @@
 name = "spheres"
 version = "0.1.0"
 authors = [ "pcummuskey <pcummuskey@bravurasolutions.com>" ]
+publish = false
 
 [[bin]]
 name = "spheres"
@@ -11,3 +12,8 @@ path = "src/main.rs"
 conrod = "*"
 notify = "*"
 yaml-rust = "*"
+
+[features]
+default = [ "glium" ]
+glium   = [ "conrod/winit", "conrod/glium" ]
+piston  = [ "conrod/piston" ]

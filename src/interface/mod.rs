@@ -11,10 +11,12 @@ pub struct Interface {
 }
 
 #[cfg(all(feature="winit", feature="glium"))]
-mod glium;
+mod _glium;
 
+#[cfg(feature="piston")]
+mod _piston;
 
-#[cfg(not(all(feature="winit", feature="glium")))]
+#[cfg(not(any(feature="piston", all(feature="winit", feature="glium"))))]
 impl Interface {
 	pub fn new(data: &Data) -> Self { panic!("You need one of the available backends enabled.") }
 	pub fn show(&self)              { panic!("You need one of the available backends enabled.") }
